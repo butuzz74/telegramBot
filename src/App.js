@@ -1,9 +1,16 @@
-import React from "react";
-const tg = window.Telegram.WebApp
+import React, { useEffect } from "react";
+const tg = window.Telegram.WebApp;
 
 function App() {
-  console.log(tg.version)
-  return <div className="App">Welcom</div>;
+  useEffect(() => {
+    tg.ready();
+  }, []);
+  const onClose = () => {
+    tg.close();
+  };
+  return <div className="App">Welcom
+  <button onClick={onClose}>Закрыть</button>
+    </div>;
 }
 
 export default App;
