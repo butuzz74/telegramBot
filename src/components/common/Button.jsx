@@ -1,14 +1,8 @@
-import React from 'react';
+import React from "react";
+import "./button.css"
 
-const Button = ({onClick, children}) => {
-    return <button onClick={onClick} style={{
-        background: `var(--tg-theme-bg-color)`,
-        color: `var(--tg-theme-text-color)`,
-        border: "none",
-        outline: "none",
-        cursor: "pointer"
+const Button = ({ onClick, children }) => {
+  return <button onClick={onClick}>{children}</button>;
+};
 
-    }}>{children}</button>
-}
- 
-export default Button 
+export default Button;
