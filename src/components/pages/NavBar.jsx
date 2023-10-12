@@ -1,18 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "../common/Button";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       style={{
         display: "flex",
-        justifyContent: "flex-end",
-        margin: "1rem",        
-
+        justifyContent: "space-between",
+        margin: "1rem",
       }}
     >
-      <NavLink style={{marginLeft: "1rem"}} to={"/"}>MassageList</NavLink>
-      <NavLink style={{marginLeft: "1rem"}} to={"/about"}>About me</NavLink>
+      <Button onClick={() => navigate("/")}>MassageList</Button>
+      <Button onClick={() => navigate("/about")}>Ваши данные</Button>
     </div>
   );
 };
