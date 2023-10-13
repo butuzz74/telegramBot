@@ -21,8 +21,7 @@ const FormSend = () => {
     const newData = { ...data, serviceId: massage._id, massage: massage.type };
     try {
       await orderService.create(newData);
-      // useTelegram.tg.sendData(JSON.stringify(newData));
-      useTelegram.tg.answerWebAppQuery()
+      useTelegram.tg.sendData(JSON.stringify(newData));      
     } catch (error) {
       console.log(error);
     }
