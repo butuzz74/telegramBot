@@ -3,48 +3,45 @@ import TextField from "../form/TextField";
 import Button from "../common/Button";
 import { TelegramContext } from "../../context/context";
 import useTelegram from "../../hooks/useTelegram";
+import orderService from "../../services/order.service";
 
 const FormSend = () => {
   const { massage } = useContext(TelegramContext);
   const inisialState = {
-    name: "",
-    surname: "",
-    phone: "",
-    male: "",
+    nick: "",    
+    phone: ""    
   };
   const [data, setData] = useState(inisialState);
 
   const onChange = ({ target }) => {
     setData((prevState) => ({ ...prevState, [target.name]: target.value }));
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    const newData = {...data, serviceId: massage._id, massage: massage.type}
+    try {
+      await orderService.create(newData)
+      useTelegram.tg.sendData(JSON.stringify(newData));
+    } catch (error) {
+      console.log(error)
+    }
     setData(inisialState);
   };
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h3 style={{ textAlign: "center" }}>
-        Привет {useTelegram.user}! Вы выбрали {massage.toLowerCase()}. Спасибо!{" "}
+      <h3 style={{ textAlign: "center", marginBottom: "1rem", color: "#2F4F4F	" }}>
+        Привет {useTelegram.user}! Вы выбрали {massage.type.toLowerCase()}. Оставьте пожалуйста Ваши координаты для связи! Спасибо!{" "}
       </h3>
       <form onSubmit={onSubmit}>
         <TextField
           label={"Ваше имя"}
-          name="name"
-          value={data.name}
+          name="nick"
+          value={data.nick}
           type={"text"}
-          id={"name"}
+          id={"nick"}
           onChange={onChange}
-        />
-        <TextField
-          label={"Ваша фамилия"}
-          name="surname"
-          value={data.surname}
-          type={"text"}
-          id={"surname"}
-          onChange={onChange}
-        />
+        />        
         <TextField
           label={"Ваш телефон для связи"}
           name="phone"

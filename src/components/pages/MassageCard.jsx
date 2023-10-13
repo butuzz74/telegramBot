@@ -21,7 +21,7 @@ const MassageCard = ({ massage, onClick}) => {
     >
       <h2 style={{marginBottom: "0.5rem"}}>{massage.type}</h2>
       <p style={{marginBottom: "0.5rem"}}>{massage.description}</p>
-      <Button onClick={() => onClick(massage.type)}>Cделать заказ</Button>
+      <Button onClick={() => onClick(massage)}>Cделать заказ</Button>
     </div>
   );
 };
