@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import TextField from "../form/TextField";
 import Button from "../common/Button";
 import { TelegramContext } from "../../context/context";
+import useTelegram from "../../hooks/useTelegram";
 
 const FormSend = () => {
   const { massage } = useContext(TelegramContext);
@@ -25,7 +26,7 @@ const FormSend = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <h3 style={{ textAlign: "center" }}>
-        Вы выбрали {massage.toLowerCase()}. Спасибо!{" "}
+        Привет {useTelegram.user}! Вы выбрали {massage.toLowerCase()}. Спасибо!{" "}
       </h3>
       <form onSubmit={onSubmit}>
         <TextField
