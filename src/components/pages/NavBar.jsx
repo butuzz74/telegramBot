@@ -16,7 +16,7 @@ const NavBar = () => {
       }}
     >
       <Button onClick={() => navigate("/")}>MassageList</Button>
-      <Button onClick={() => navigate("/sendform")}>Ваши данные</Button>
+      {/* <Button onClick={() => navigate("/sendform")}>Ваши данные</Button> */}
       <Button onClick={() => close()}>Выйти</Button>
     </div>
   );
