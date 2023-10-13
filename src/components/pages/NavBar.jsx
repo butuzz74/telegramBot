@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../common/Button";
-import { TelegramContext } from "../../context/context";
 import useTelegram from "../../hooks/useTelegram";
 
 const NavBar = () => {
