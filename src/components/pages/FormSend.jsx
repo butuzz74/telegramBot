@@ -18,7 +18,7 @@ const FormSend = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    const newData = { ...data, serviceId: massage._id, massage: massage.type };
+    const newData = { ...data, serviceId: massage._id, massage: massage.type, query_id: useTelegram.queryId };
     try {
       await orderService.create(newData);
       useTelegram.tg.sendData(JSON.stringify(newData));      
