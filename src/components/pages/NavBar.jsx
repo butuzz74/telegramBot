@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../common/Button";
+import { TelegramContext } from "../../context/context";
+import useTelegram from "../../hooks/useTelegram";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const {close} = useTelegram
 
   return (
     <div
@@ -14,7 +17,8 @@ const NavBar = () => {
       }}
     >
       <Button onClick={() => navigate("/")}>MassageList</Button>
-      <Button onClick={() => navigate("/about")}>Ваши данные</Button>
+      <Button onClick={() => navigate("/sendform")}>Ваши данные</Button>
+      <Button onClick={() => close()}>Выйти</Button>
     </div>
   );
 };

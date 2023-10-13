@@ -3,22 +3,26 @@ import { Routes, Route } from "react-router-dom";
 import MassageList from "./components/pages/MassageList";
 import About from "./components/pages/About";
 import NavBar from "./components/pages/NavBar";
-const tg = window.Telegram.WebApp;
+import useTelegram from "./hooks/useTelegram";
+import FormSend from "./components/pages/FormSend";
+import { TelegramContextProvider } from "./context/context";
 
 function App() {
+  const { ready } = useTelegram;
   useEffect(() => {
-    tg.ready();
+    ready();
   }, []);
-  // const onClose = () => {
-  //   tg.close();
-  // };
+
   return (
     <div>
       <NavBar />
-      <Routes>
-        <Route path="/" element={<MassageList />} />
-        <Route path="about" element={<About />} />
-      </Routes>
+      <TelegramContextProvider>
+        <Routes>
+          <Route path="/" element={<MassageList />} />
+          <Route path="about" element={<About />} />
+          <Route path="sendform" element={<FormSend />} />
+        </Routes>
+      </TelegramContextProvider>
     </div>
   );
 }
