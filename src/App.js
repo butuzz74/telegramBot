@@ -11,7 +11,7 @@ function App() {
   const { ready } = useTelegram;
   useEffect(() => {
     ready();
-  }, []);
+  }, [ready]);
 
   return (
     <div>
