@@ -21,17 +21,18 @@ const FormSend = () => {
     const newData = { ...data, serviceId: massage._id, massage: massage.type };
     try {
       await orderService.create(newData);
-      useTelegram.tg.sendData(JSON.stringify(newData));
+      // useTelegram.tg.sendData(JSON.stringify(newData));
+      useTelegram.tg.answerWebAppQuery()
     } catch (error) {
       console.log(error);
     }
     setData(inisialState);
   };
-  useEffect(() => {
-    if (data.nick.length && data.phone.length) {
-      useTelegram.tg.MainButton.show();
-    }
-  }, [data.nick.length, data.phone.length]);
+  // useEffect(() => {
+  //   if (data.nick.length && data.phone.length) {
+  //     useTelegram.tg.MainButton.show();
+  //   }
+  // }, [data.nick.length, data.phone.length]);
 
   return (
     <div style={{ padding: "2rem" }}>
